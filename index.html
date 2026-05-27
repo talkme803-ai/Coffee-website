@@ -1,569 +1,436 @@
-<think>
-The user wants me to create a new luxury brand website with a different concept - called "999" - which is a luxury/premium brand style. They want everything from the previous coffee café website but reimagined for this new "999" luxury brand.
+/* 999 Coffee - Ultra Premium Styles */
 
-Based on their new specifications:
-- Brand Name: "999"
-- Theme: Luxury / Premium / Modern
-- Colors: Matte Black, Gold, White accents
-- Style: Minimal luxury, Cinematic visuals, Premium packaging vibe
-- Taglines: "Luxury Beyond Ordinary", "The Art of Premium Gifting", "Crafted for Elegance", "999 — Premium Experience"
-- Logo: Golden "999" monogram, thin elegant typography
-- Sections: Hero luxury banner, Premium collections, Occasion gifting, Best sellers, Luxury experience, Testimonials, Footer
+/* Root Variables */
+:root {
+    --coffee-black: #0D0D0D;
+    --coffee-brown: #2D1810;
+    --coffee-cream: #F7F3E9;
+    --coffee-gold: #D4A574;
+    --coffee-dark: #1A1A1A;
+}
 
-I need to create a complete full-stack website with:
-1. Frontend (HTML/CSS/JS) with the "999" luxury brand styling
-2. Backend (Node.js/Express with MongoDB)
+/* Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-Let me create a comprehensive "999" luxury brand website that's:
-- Ultra-premium, cinematic, and elegant
-- Uses matte black + gold color scheme
-- Features glassmorphism and smooth animations
-- Fully responsive
-- With all the requested sections and features
+body {
+    font-family: 'Inter', sans-serif;
+    background: var(--coffee-black);
+    color: var(--coffee-cream);
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
 
-I'll make it a standalone HTML file for the frontend beauty showcase, but also structure it for full-stack capability.
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
 
-Let me create this 999 luxury brand website with complete sections, animations, and premium UI/UX.
-</think>
+::-webkit-scrollbar-track {
+    background: var(--coffee-black);
+}
 
-# 999 - Ultra Luxury Brand Website
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(45deg, var(--coffee-gold), #B8956A);
+    border-radius: 4px;
+}
 
-## Complete Premium Website
+::-webkit-scrollbar-thumb:hover {
+    background: var(--coffee-gold);
+}
 
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>999 | Luxury Beyond Ordinary</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Cormorant+Garamond:wght@300;400;500;600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+/* Glass Card Effect */
+.glass-card {
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    background: rgba(45, 24, 16, 0.2);
+    border: 1px solid rgba(212, 165, 116, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+/* Loading Screen Animations */
+@keyframes logoGlow {
+    0%, 100% { text-shadow: 0 0 20px var(--coffee-gold), 0 0 40px var(--coffee-gold); }
+    50% { text-shadow: 0 0 30px var(--coffee-gold), 0 0 60px var(--coffee-gold); }
+}
+
+.loading-logo {
+    animation: logoGlow 2s ease-in-out infinite;
+}
+
+.loading-progress {
+    animation: loadingBar 3s ease-in-out;
+}
+
+@keyframes loadingBar {
+    from { width: 0%; }
+    to { width: 100%; }
+}
+
+/* Navigation Styles */
+#navbar.scrolled {
+    background: rgba(13, 13, 13, 0.95);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(212, 165, 116, 0.2);
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--coffee-gold), transparent);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* Hero Section */
+.hero-title {
+    animation: fadeInUp 1.5s ease-out;
+    text-shadow: 0 4px 20px rgba(212, 165, 116, 0.3);
+}
+
+.hero-subtitle {
+    animation: fadeInUp 1.5s ease-out 0.5s both;
+}
+
+.cta-primary,
+.cta-secondary {
+    animation: fadeInUp 1.5s ease-out 1s both;
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-primary::before,
+.cta-secondary::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
+    transition: all 0.6s;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.cta-primary:hover::before,
+.cta-secondary:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+/* Floating Elements Animation */
+.coffee-bean {
+    animation: float 6s ease-in-out infinite;
+}
+
+.coffee-bean:nth-child(2) {
+    animation-delay: -2s;
+}
+
+.coffee-bean:nth-child(3) {
+    animation-delay: -4s;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(180deg); }
+}
+
+/* Scroll Indicator */
+.scroll-indicator {
+    animation: scrollPulse 2s ease-in-out infinite;
+}
+
+@keyframes scrollPulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+/* Menu Filter */
+.filter-btn.active {
+    background: rgba(212, 165, 116, 0.3) !important;
+    color: var(--coffee-gold);
+    box-shadow: 0 4px 15px rgba(212, 165, 116, 0.2);
+}
+
+/* Menu Items Animation */
+.menu-item {
+    transition: all 0.5s ease;
+    opacity: 1;
+}
+
+.menu-item.hidden {
+    opacity: 0;
+    transform: scale(0.8);
+    pointer-events: none;
+}
+
+/* Add to Cart Animation */
+.add-to-cart:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 25px rgba(212, 165, 116, 0.4);
+}
+
+/* Product Slider */
+.product-slider {
+    overflow: hidden;
+}
+
+.product-track {
+    transition: transform 0.5s ease;
+}
+
+/* Gallery Hover Effects */
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+}
+
+.gallery-item::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(45deg, rgba(212, 165, 116, 0.2), rgba(212, 165, 116, 0.1));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.gallery-item:hover::after {
+    opacity: 1;
+}
+
+/* Testimonials */
+.testimonial-card {
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Form Styles */
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: var(--coffee-gold);
+    box-shadow: 0 0 0 3px rgba(212, 165, 116, 0.1);
+}
+
+/* Newsletter Button Glow */
+.newsletter-btn:hover {
+    box-shadow: 0 0 30px rgba(212, 165, 116, 0.6);
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 3rem;
+    }
     
-    <style>
-        /* ============================================
-           999 LUXURY BRAND - CSS VARIABLES
-           ============================================ */
-        :root {
-            /* Primary Colors */
-            --matte-black: #0a0a0a;
-            --deep-black: #050505;
-            --charcoal: #151515;
-            --dark-gray: #1a1a1a;
-            --medium-gray: #2d2d2d;
-            
-            /* Gold Accents */
-            --gold-primary: #c9a227;
-            --gold-light: #d4af37;
-            --gold-dark: #aa8822;
-            --gold-shimmer: #f0d875;
-            
-            /* White Accents */
-            --white: #ffffff;
-            --off-white: #f5f5f5;
-            --cream-white: #fafafa;
-            --silver: #c0c0c0;
-            
-            /* Gradients & Effects */
-            --gradient-gold: linear-gradient(135deg, var(--gold-light), var(--gold-dark));
-            --gradient-dark: linear-gradient(180deg, var(--matte-black), var(--deep-black));
-            --glass-bg: rgba(255, 255, 255, 0.03);
-            --glass-border: rgba(201, 162, 39, 0.2);
-            --shadow-dark: rgba(0, 0, 0, 0.5);
-            --shadow-gold: rgba(201, 162, 39, 0.3);
-            --glow-gold: 0 0 40px rgba(201, 162, 39, 0.3);
-        }
+    .menu-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .product-card {
+        min-width: 300px;
+    }
+    
+    .experience-gallery {
+        grid-template-columns: 1fr;
+    }
+}
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+@media (max-width: 640px) {
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+    
+    .section-title {
+        font-size: 3rem;
+    }
+}
 
-        html {
-            scroll-behavior: smooth;
-        }
+/* Animation Keyframes */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: var(--matte-black);
-            color: var(--off-white);
-            overflow-x: hidden;
-            line-height: 1.7;
-        }
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
 
-        /* ============================================
-           TYPOGRAPHY
-           ============================================ */
-        .font-cinzel {
-            font-family: 'Cinzel', serif;
-        }
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
 
-        .font-playfair {
-            font-family: 'Playfair Display', serif;
-        }
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
 
-        .font-cormorant {
-            font-family: 'Cormorant Garamond', serif;
-        }
+/* Cursor Glow Effect */
+#cursor-glow {
+    transition: all 0.1s ease;
+    mix-blend-mode: difference;
+}
 
-        /* ============================================
-           UTILITY CLASSES
-           ============================================ */
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 60px;
-        }
+/* Particles */
+.particle {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: var(--coffee-gold);
+    border-radius: 50%;
+    opacity: 0.6;
+    animation: particleFloat 8s linear infinite;
+}
 
-        .gold-text {
-            background: linear-gradient(135deg, var(--gold-light), var(--gold-shimmer), var(--gold-light));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
+@keyframes particleFloat {
+    from {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.6;
+    }
+    90% {
+        opacity: 0.6;
+    }
+    to {
+        transform: translateY(-10vh) rotate(360deg);
+        opacity: 0;
+    }
+}
 
-        .section-title {
-            font-family: 'Cinzel', serif;
-            font-size: clamp(32px, 4vw, 48px);
-            font-weight: 600;
-            text-align: center;
-            margin-bottom: 15px;
-        }
+/* Dark/Light Mode Styles */
+body.light-mode {
+    --coffee-black: #F7F3E9;
+    --coffee-cream: #2D1810;
+    --coffee-brown: rgba(212, 165, 116, 0.1);
+}
 
-        .section-subtitle {
-            font-family: 'Cormorant Garamond', serif;
-            text-align: center;
-            color: var(--silver);
-            font-size: 16px;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            margin-bottom: 50px;
-        }
+/* Advanced Hover Effects */
+.hover-lift:hover {
+    transform: translateY(-10px);
+    transition: transform 0.3s ease;
+}
 
-        /* ============================================
-           CUSTOM SCROLLBAR
-           ============================================ */
-        ::-webkit-scrollbar {
-            width: 6px;
-        }
+.hover-glow:hover {
+    box-shadow: 0 0 30px rgba(212, 165, 116, 0.4);
+    transition: box-shadow 0.3s ease;
+}
 
-        ::-webkit-scrollbar-track {
-            background: var(--matte-black);
-        }
+/* Steam Effect */
+.steam {
+    position: relative;
+    overflow: hidden;
+}
 
-        ::-webkit-scrollbar-thumb {
-            background: var(--gradient-gold);
-            border-radius: 3px;
-        }
+.steam::before,
+.steam::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    width: 50px;
+    height: 50px;
+    background: radial-gradient(circle, rgba(247, 243, 233, 0.3), transparent);
+    border-radius: 50%;
+    animation: steam 3s ease-in-out infinite;
+}
 
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--gold-light);
-        }
+.steam::after {
+    animation-delay: -1.5s;
+    left: 60%;
+}
 
-        /* ============================================
-           PARTICLES SYSTEM
-           ============================================ */
-        .particles-container {
-            position: fixed;
-            inset: 0;
-            pointer-events: none;
-            z-index: 1;
-            overflow: hidden;
-        }
+@keyframes steam {
+    0% {
+        opacity: 0;
+        transform: translateY(0) scale(0.5);
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-100px) scale(1);
+    }
+}
 
-        .luxury-particle {
-            position: absolute;
-            border-radius: 50%;
-        }
+/* Micro-interactions */
+.button-pulse:hover {
+    animation: pulse 0.6s ease-in-out;
+}
 
-        .gold-dust {
-            width: 3px;
-            height: 3px;
-            background: var(--gold-light);
-            opacity: 0;
-            box-shadow: 0 0 8px var(--gold-primary);
-            animation: floatGold 12s ease-in-out infinite;
-        }
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
 
-        .sparkle {
-            width: 4px;
-            height: 4px;
-            background: var(--white);
-            opacity: 0;
-            animation: sparkle 8s ease-in-out infinite;
-        }
+/* Text Reveal Animation */
+.text-reveal {
+    overflow: hidden;
+}
 
-        @keyframes floatGold {
-            0% { transform: translateY(100vh) scale(0); opacity: 0; }
-            10% { opacity: 0.6; }
-            90% { opacity: 0.4; }
-            100% { transform: translateY(-100vh) scale(1); opacity: 0; }
-        }
+.text-reveal span {
+    display: inline-block;
+    opacity: 0;
+    animation: textReveal 0.8s ease forwards;
+}
 
-        @keyframes sparkle {
-            0%, 100% { opacity: 0; transform: scale(0); }
-            50% { opacity: 0.8; transform: scale(1); }
-        }
+@keyframes textReveal {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 
-        /* ============================================
-           NAVIGATION NAVBAR
-           ============================================ */
-        .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            padding: 22px 50px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 1000;
-            background: linear-gradient(180deg, rgba(10, 10, 10, 0.95) 0%, rgba(10, 10, 10, 0.5) 50%, transparent 100%);
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        }
+/* Section Transitions */
+section {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 1s ease;
+}
 
-        .navbar.scrolled {
-            padding: 15px 50px;
-            background: rgba(10, 10, 10, 0.98);
-            box-shadow: 0 5px 40px rgba(0, 0, 0, 0.6);
-        }
-
-        .nav-logo {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            text-decoration: none;
-        }
-
-        .logo-999 {
-            width: 55px;
-            height: 55px;
-            background: var(--gradient-gold);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Cinzel', serif;
-            font-size: 22px;
-            font-weight: 700;
-            color: var(--matte-black);
-            box-shadow: var(--glow-gold);
-            animation: logoPulse 3s ease-in-out infinite;
-        }
-
-        @keyframes logoPulse {
-            0%, 100% { box-shadow: 0 0 25px var(--shadow-gold); }
-            50% { box-shadow: 0 0 50px var(--shadow-gold), 0 0 80px rgba(201, 162, 39, 0.2); }
-        }
-
-        .logo-text {
-            font-family: 'Cinzel', serif;
-            font-size: 28px;
-            font-weight: 600;
-            color: var(--white);
-            letter-spacing: 4px;
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 40px;
-            list-style: none;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--silver);
-            font-size: 11px;
-            font-weight: 500;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            position: relative;
-            padding: 8px 0;
-            transition: all 0.3s ease;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            width: 0;
-            height: 1px;
-            background: var(--gold-light);
-            transition: all 0.3s ease;
-            transform: translateX(-50%);
-        }
-
-        .nav-links a:hover {
-            color: var(--gold-light);
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        .nav-btn {
-            padding: 12px 30px;
-            background: transparent;
-            border: 1px solid var(--gold-primary);
-            border-radius: 0;
-            color: var(--gold-light);
-            font-family: 'Poppins', sans-serif;
-            font-size: 10px;
-            font-weight: 600;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .nav-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: var(--gradient-gold);
-            transition: left 0.5s ease;
-            z-index: -1;
-        }
-
-        .nav-btn:hover {
-            color: var(--matte-black);
-        }
-
-        .nav-btn:hover::before {
-            left: 0;
-        }
-
-        .mobile-toggle {
-            display: none;
-            flex-direction: column;
-            gap: 6px;
-            cursor: pointer;
-            padding: 10px;
-        }
-
-        .mobile-toggle span {
-            width: 28px;
-            height: 2px;
-            background: var(--gold-light);
-            transition: all 0.3s ease;
-        }
-
-        /* ============================================
-           HERO SECTION
-           ============================================ */
-        .hero {
-            position: relative;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            padding-top: 80px;
-        }
-
-        .hero-bg {
-            position: absolute;
-            inset: 0;
-            background: var(--gradient-dark);
-        }
-
-        .hero-bg::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(ellipse 80% 50% at 50% 0%, rgba(201, 162, 39, 0.08) 0%, transparent 50%),
-                radial-gradient(circle at 20% 80%, rgba(201, 162, 39, 0.05) 0%, transparent 40%);
-        }
-
-        .hero-glow {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 800px;
-            height: 800px;
-            background: radial-gradient(circle, rgba(201, 162, 39, 0.15) 0%, transparent 60%);
-            animation: heroGlow 6s ease-in-out infinite;
-            z-index: 2;
-        }
-
-        @keyframes heroGlow {
-            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.8; }
-            50% { transform: translate(-50%, -50%) scale(1.1); opacity: 1; }
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 10;
-            text-align: center;
-            max-width: 900px;
-            padding: 0 30px;
-        }
-
-        .hero-badge {
-            display: inline-block;
-            padding: 12px 35px;
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            font-size: 10px;
-            letter-spacing: 5px;
-            text-transform: uppercase;
-            color: var(--gold-light);
-            margin-bottom: 35px;
-            backdrop-filter: blur(10px);
-            animation: fadeInDown 1s ease backwards;
-        }
-
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .hero-title {
-            font-family: 'Cinzel', serif;
-            font-size: clamp(48px, 9vw, 110px);
-            font-weight: 700;
-            line-height: 1.05;
-            margin-bottom: 30px;
-            letter-spacing: 8px;
-            animation: fadeInUp 1s ease 0.3s backwards;
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .hero-tagline {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 20px;
-            color: var(--silver);
-            margin-bottom: 45px;
-            letter-spacing: 2px;
-            animation: fadeInUp 1s ease 0.5s backwards;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
-            animation: fadeInUp 1s ease 0.7s backwards;
-        }
-
-        .btn-primary {
-            padding: 18px 50px;
-            background: var(--gradient-gold);
-            border: none;
-            color: var(--matte-black);
-            font-family: 'Poppins', sans-serif;
-            font-size: 11px;
-            font-weight: 600;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: all 0.4s ease;
-            box-shadow: var(--glow-gold);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 0 60px var(--shadow-gold);
-        }
-
-        .btn-outline {
-            padding: 18px 50px;
-            background: transparent;
-            border: 1px solid var(--white);
-            color: var(--white);
-            font-family: 'Poppins', sans-serif;
-            font-size: 11px;
-            font-weight: 500;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: all 0.4s ease;
-        }
-
-        .btn-outline:hover {
-            background: var(--white);
-            color: var(--matte-black);
-        }
-
-        /* ============================================
-           LUXURY BANNER
-           ============================================ */
-        .luxury-banner {
-            padding: 120px 0;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .banner-bg {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, var(--charcoal) 0%, var(--matte-black) 100%);
-        }
-
-        .banner-accent {
-            position: absolute;
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(201, 162, 39, 0.2) 0%, transparent 70%);
-            top: -100px;
-            right: -100px;
-        }
-
-        .banner-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 80px;
-            align-items: center;
-        }
-
-        .banner-content h2 {
-            font-family: 'Cinzel', serif;
-            font-size: clamp(32px, 4vw, 48px);
-            margin-bottom: 25px;
-        }
-
-        .banner-content p {
-            color: var(--silver);
-            font-size: 16px;
-            line-height: 1.8;
-            margin-bottom: 35px;
-        }
-
-        .banner-image {
-            position: relative;
-            display: flex;
-            justify-content: center;
-        }
-
-        .image-frame {
-            width: 350px;
-            height: 450px;
-            border: 1px solid var(--gold-primary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            background: var(--glass-bg);
-            backdrop-filter: blur(5px);
-        }
-
-        .image-frame::before {
-            content: '999';
-            font-family: 'Cinzel
+section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
